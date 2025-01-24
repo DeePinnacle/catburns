@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local"
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +12,20 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const caprasimo = localFont({
+  src: "./fonts/Caprasimo.ttf",
+  variable: "--font-caprasimo",
+  subsets: ["latin"],
+  weight: "100 900"
+})
+
+const workSans = localFont({
+  src: "./fonts/WorkSans.ttf",
+  variable: "--font-work-sans",
+  subsets: ["latin"],
+  weight: "100 900"
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${caprasimo.variable} ${workSans.variable} antialiased`}
       >
         {children}
       </body>
