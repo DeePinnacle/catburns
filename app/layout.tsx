@@ -16,14 +16,12 @@ const geistMono = Geist_Mono({
 const caprasimo = localFont({
   src: "./fonts/Caprasimo.ttf",
   variable: "--font-caprasimo",
-  subsets: ["latin"],
   weight: "100 900"
 })
 
 const workSans = localFont({
   src: "./fonts/WorkSans.ttf",
   variable: "--font-work-sans",
-  subsets: ["latin"],
   weight: "100 900"
 })
 
