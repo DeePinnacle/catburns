@@ -24,12 +24,11 @@ import { useState, useEffect } from "react";
 
 // embla imports
 import { EmblaOptionsType } from "embla-carousel";
-// import { DotButton, useDotButton } from "@/components/ui/EmblaDotButton";
-// import {
-//   PrevButton,
-//   NextButton,
-//   usePrevNextButtons,
-// } from "@/components/ui/EmblaArrowButton";
+import {
+  PrevButton,
+  NextButton,
+  usePrevNextButtons,
+} from "@/components/ui/EmblaArrowButton";
 import useEmblaCarousel from "embla-carousel-react";
 
 export default function Home() {
@@ -48,15 +47,14 @@ export default function Home() {
   };
   const [videoRef, emblaApi] = useEmblaCarousel(VIDEOS_OPTIONS);
 
-  const LINK_OPTIONS: EmblaOptionsType ={
+  const LINK_OPTIONS: EmblaOptionsType = {
     slidesToScroll: 1,
     containScroll: "trimSnaps",
     loop: false,
-    dragFree: true, 
-  }
+    dragFree: true,
+  };
 
   const [linkRef] = useEmblaCarousel(LINK_OPTIONS);
-
 
   // state to track when dragging starts/stops
   const [isDragging, setIsDragging] = useState(false);
@@ -66,15 +64,12 @@ export default function Home() {
     emblaApi.on("pointerUp", () => setIsDragging(false));
   }, [emblaApi]);
 
-  // const { selectedIndex, scrollSnaps, onDotButtonClick } =
-  //   useDotButton(emblaApi);
-
-  // const {
-  //   prevBtnDisabled,
-  //   nextBtnDisabled,
-  //   onPrevButtonClick,
-  //   onNextButtonClick,
-  // } = usePrevNextButtons(emblaApi);
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi);
   return (
     <div className="catburn-container">
       <div className="catburn-contents">
@@ -127,13 +122,11 @@ export default function Home() {
           <div className="link__carousel">
             <div className="link__carousel__viewport" ref={linkRef}>
               <ul className="link__carousel__track">
-                {
-                  topNavLink.map((link, idx)=>(
-                    <li className="link__slide item" key={idx}>
-                      <Link href={link.href}>{ link.title }</Link>
-                    </li>
-                  ))
-                }
+                {topNavLink.map((link, idx) => (
+                  <li className="link__slide item" key={idx}>
+                    <Link href={link.href}>{link.title}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -276,18 +269,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* <div className="embla__controls">
-              <div className="embla__buttons">
-                <PrevButton
-                  onClick={onPrevButtonClick}
-                  disabled={prevBtnDisabled}
-                />
-                <NextButton
-                  onClick={onNextButtonClick}
-                  disabled={nextBtnDisabled}
-                />
-              </div>
-            </div> */}
           </div>
         </div>
         {/* songs section ends here */}
@@ -314,6 +295,18 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+            <div className="embla__controls">
+              <div className="embla__buttons">
+                <PrevButton
+                  onClick={onPrevButtonClick}
+                  disabled={prevBtnDisabled}
+                />
+                <NextButton
+                  onClick={onNextButtonClick}
+                  disabled={nextBtnDisabled}
+                />
               </div>
             </div>
             <Link
@@ -355,14 +348,15 @@ export default function Home() {
         </section>
         {/*official store section ends here */}
 
-        
         {/* official tour section starts */}
         <section className="w-full px-2 py-3">
           <div className="border-b border-solid border-[gray]">
             <h2 className="text-2xl font-caprasimo my-3">tour dates</h2>
             <div className="w-full my-4 p-4 bg-black/40 rounded-tr-xl rounded-tl-xl flex flex-row items-center gap-2">
               <div className="w-32 h- p-4 flex flex-col items-center justify-center border border-solid border-[gray] rounded-md">
-                <p className="uppercase font-caprasimo font-semibold text-lg my-2">Feb</p>
+                <p className="uppercase font-caprasimo font-semibold text-lg my-2">
+                  Feb
+                </p>
                 <p className="font-caprasimo font-semibold text-3xl">17</p>
                 <p className="text-base font-workSans my-2">2025</p>
               </div>
@@ -371,7 +365,9 @@ export default function Home() {
                 <p className="mt-2 font-extralight">
                   merch and signed bundles 🤍
                 </p>
-                <p className="w-1/2 p-2 mt-2 rounded-full border border-solid border-[gray] text-center">Sold out</p>
+                <p className="w-1/2 p-2 mt-2 rounded-full border border-solid border-[gray] text-center">
+                  Sold out
+                </p>
               </div>
             </div>
           </div>
@@ -383,33 +379,53 @@ export default function Home() {
           <div className="border-b border-solid border-[gray]">
             <h2 className="text-2xl font-caprasimo my-3">Newsletter</h2>
             <div className="w-full my-4 p-4 bg-black/40 rounded-tr-xl rounded-tl-xl flex flex-col items-center justify-center gap-2">
-              <h2 className="my-4 font-caprasimo font-semibold text-2xl">Connect with Cat Burns</h2>
+              <h2 className="my-4 font-caprasimo font-semibold text-2xl">
+                Connect with Cat Burns
+              </h2>
               <div className="w-full flex flex-row items-center justify-center gap-4">
-                <Link href="" className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full">
+                <Link
+                  href=""
+                  className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full"
+                >
                   <FaEnvelope />
                   Email
                 </Link>
-                <Link href="" className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full">
+                <Link
+                  href=""
+                  className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full"
+                >
                   <FaSpotify />
                   <p>Follow</p>
                 </Link>
-                <Link href="" className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full">
+                <Link
+                  href=""
+                  className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full"
+                >
                   <FaApple />
                   <p>Follow</p>
                 </Link>
-              </div>              
+              </div>
               <div className="w-full flex flex-row items-center justify-center gap-4">
-                <Link href="" className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full">
+                <Link
+                  href=""
+                  className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full"
+                >
                   <FaAmazon />
                   <p>Follow</p>
                 </Link>
-                <Link href="" className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full">
+                <Link
+                  href=""
+                  className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full"
+                >
                   <FaYoutube />
                   <p>Youtube</p>
                 </Link>
-              </div>              
+              </div>
               <div className="w-full flex flex-row items-center justify-center gap-4">
-                <Link href="" className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full">
+                <Link
+                  href=""
+                  className="flex flex-row items-center gap-4 px-4 py-2 border border-solid border-[gray] rounded-full"
+                >
                   <FaDeezer />
                   <p>Follow</p>
                 </Link>
@@ -421,19 +437,13 @@ export default function Home() {
 
         {/* footer section goest here */}
         <footer className="w-full py-8 px-4 flex flex-row flex-wrap items-center justify-center gap-6">
-          <Link href="">
-          © 2025 Sony Music Entertainment UK Ltd
-          </Link>
-          <Link href="">
-          Privacy & Cookie Policy
-          </Link>
-          <Link href="">
-           Terms & Conditions
-          </Link>
+          <Link href="">© 2025 Sony Music Entertainment UK Ltd</Link>
+          <Link href="">Privacy & Cookie Policy</Link>
+          <Link href="">Terms & Conditions</Link>
           <Link href="">AI Usage</Link>
         </footer>
         {/* footer ends here */}
       </div>
     </div>
   );
-} 
+}
