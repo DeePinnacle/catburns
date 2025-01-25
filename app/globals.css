@@ -114,7 +114,7 @@ body {
     @apply w-full absolute top-[450px] lg:top-[690px] lg:w-[593px];
   }
   .logo {
-    @apply relative w-4/5 h-28 overflow-hidden mx-auto lg:w-full;
+    @apply relative w-full h-28 p-6 overflow-hidden mx-auto lg:w-full;
   }
   .media-icons {
     @apply w-full h-28 flex flex-row items-center justify-between gap-3 bg-primary px-3;
